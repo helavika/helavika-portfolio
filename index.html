@@ -1,0 +1,415 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Viktoria Shchypalkina · Front-End & Marketing Technology Engineer</title>
+<meta name="description" content="Front-end and marketing-technology engineer in Kyiv. 7+ years building referral programs, A/B tests and Apple & Google Wallet passes for 300+ brands.">
+<meta property="og:title" content="Viktoria Shchypalkina">
+<meta property="og:description" content="Front-End & Marketing Technology Engineer · Referral programs · A/B testing · Apple & Google Wallet · AI agents">
+<meta property="og:type" content="website">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='16' fill='%237C3AED'/%3E%3Ctext x='32' y='43' font-family='Georgia,serif' font-size='30' text-anchor='middle' fill='white'%3EVS%3C/text%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,600&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+:root {
+  --bg: #fbf8f4;
+  --surface: #ffffff;
+  --ink: #221d2e;
+  --muted: #6b6478;
+  --line: #ebe4f2;
+  --accent: #7c3aed;
+  --accent-soft: #efe7ff;
+  --peach: #ffd9c7;
+  --mint: #cdeee0;
+  --sky: #d6e6ff;
+  --lilac: #e4d8ff;
+  --shadow: 0 1px 2px rgba(40, 20, 70, .04), 0 8px 24px rgba(40, 20, 70, .06);
+  color-scheme: light;
+}
+@media (prefers-color-scheme: dark) {
+  :root {
+    --bg: #15121c;
+    --surface: #1e1a28;
+    --ink: #f1ecf8;
+    --muted: #a69fb5;
+    --line: #2f2940;
+    --accent: #b99bff;
+    --accent-soft: #2c2342;
+    --peach: #4a3330;
+    --mint: #233d36;
+    --sky: #23324a;
+    --lilac: #352a50;
+    --shadow: 0 1px 2px rgba(0,0,0,.3), 0 8px 24px rgba(0,0,0,.25);
+    color-scheme: dark;
+  }
+}
+* { box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--ink);
+  font: 400 17px/1.6 Inter, system-ui, -apple-system, "Segoe UI", sans-serif;
+  -webkit-font-smoothing: antialiased;
+}
+a { color: var(--accent); text-underline-offset: 3px; }
+a:hover { text-decoration-thickness: 2px; }
+h1, h2, h3 { font-family: Fraunces, Georgia, serif; font-weight: 600; line-height: 1.15; margin: 0; }
+.wrap { max-width: 1040px; margin: 0 auto; padding: 0 24px; }
+
+/* nav */
+nav {
+  position: sticky; top: 0; z-index: 10;
+  background: color-mix(in srgb, var(--bg) 85%, transparent);
+  backdrop-filter: blur(10px);
+  border-bottom: 1px solid transparent;
+  transition: border-color .2s;
+}
+nav.scrolled { border-bottom-color: var(--line); }
+nav .wrap { display: flex; align-items: center; justify-content: space-between; height: 60px; }
+nav .mark { font-family: Fraunces, Georgia, serif; font-weight: 600; font-size: 19px; color: var(--ink); text-decoration: none; }
+nav ul { list-style: none; display: flex; gap: 24px; margin: 0; padding: 0; }
+nav ul a { color: var(--muted); text-decoration: none; font-size: 15px; font-weight: 500; }
+nav ul a:hover { color: var(--ink); }
+
+/* hero */
+.hero { position: relative; padding: 96px 0 72px; overflow: hidden; }
+.hero canvas { position: absolute; inset: 0; width: 100%; height: 100%; pointer-events: none; }
+.hero .wrap { position: relative; }
+.eyebrow { color: var(--muted); font-size: 15px; font-weight: 500; margin-bottom: 18px; display: flex; align-items: center; gap: 8px; }
+.eyebrow .dot { width: 8px; height: 8px; border-radius: 50%; background: #34c38f; box-shadow: 0 0 0 4px color-mix(in srgb, #34c38f 22%, transparent); }
+.hero h1 { font-size: clamp(42px, 7vw, 76px); letter-spacing: -.02em; max-width: 12ch; }
+.hero .role { font-size: clamp(19px, 2.4vw, 24px); margin: 20px 0 8px; font-weight: 500; }
+.hero .focus { color: var(--muted); margin: 0 0 28px; }
+.hero .lede { max-width: 58ch; font-size: 18px; margin: 0 0 32px; }
+.btns { display: flex; flex-wrap: wrap; gap: 12px; }
+.btn {
+  display: inline-flex; align-items: center; gap: 8px;
+  padding: 12px 20px; border-radius: 999px;
+  font-weight: 600; font-size: 15px; text-decoration: none;
+  border: 1px solid var(--line); background: var(--surface); color: var(--ink);
+  transition: transform .15s, box-shadow .15s;
+}
+.btn:hover { transform: translateY(-1px); box-shadow: var(--shadow); }
+.btn.primary { background: var(--accent); border-color: var(--accent); color: var(--bg); }
+
+/* stats */
+.stats { display: grid; grid-template-columns: repeat(5, 1fr); gap: 1px; background: var(--line); border: 1px solid var(--line); border-radius: 20px; overflow: hidden; margin-top: 64px; }
+.stat { background: var(--surface); padding: 22px 20px; }
+.stat b { display: block; font-family: Fraunces, Georgia, serif; font-size: 34px; font-weight: 600; line-height: 1.1; }
+.stat span { color: var(--muted); font-size: 14px; }
+
+section { padding: 72px 0; }
+.sec-head { margin-bottom: 32px; }
+.sec-head h2 { font-size: clamp(30px, 4vw, 40px); }
+.sec-head p { color: var(--muted); margin: 10px 0 0; max-width: 60ch; }
+
+/* focus cards */
+.grid { display: grid; gap: 18px; }
+.cards { grid-template-columns: repeat(2, 1fr); }
+.card {
+  background: var(--surface); border: 1px solid var(--line); border-radius: 20px;
+  padding: 26px; box-shadow: var(--shadow);
+}
+.card .ico { width: 44px; height: 44px; border-radius: 14px; display: grid; place-items: center; font-size: 22px; margin-bottom: 16px; }
+.card h3 { font-size: 22px; margin-bottom: 8px; }
+.card p { margin: 0; color: var(--muted); }
+.card .num { color: var(--ink); font-weight: 600; }
+
+/* case studies */
+.cases { grid-template-columns: repeat(3, 1fr); }
+.case { padding: 24px; border-radius: 20px; border: 1px solid var(--line); background: var(--surface); }
+.case .big { font-family: Fraunces, Georgia, serif; font-size: 44px; font-weight: 600; color: var(--accent); line-height: 1; }
+.case .what { color: var(--muted); font-size: 15px; margin: 6px 0 14px; }
+.case .brand { font-weight: 600; }
+.brands { margin-top: 28px; color: var(--muted); font-size: 15px; }
+.brands strong { color: var(--ink); font-weight: 500; }
+.note { color: var(--muted); font-size: 13px; margin-top: 12px; }
+
+/* projects */
+.projects { grid-template-columns: repeat(2, 1fr); }
+.project { background: var(--surface); border: 1px solid var(--line); border-radius: 22px; overflow: hidden; box-shadow: var(--shadow); display: flex; flex-direction: column; transition: transform .2s; }
+.project:hover { transform: translateY(-3px); }
+.project img { width: 100%; aspect-ratio: 1200 / 630; object-fit: cover; display: block; border-bottom: 1px solid var(--line); }
+.project .body { padding: 22px 24px 24px; display: flex; flex-direction: column; flex: 1; }
+.project h3 { font-size: 24px; }
+.project p { color: var(--muted); margin: 8px 0 16px; flex: 1; }
+.tags { display: flex; flex-wrap: wrap; gap: 6px; margin-bottom: 18px; }
+.tag { font-size: 12.5px; font-weight: 500; padding: 4px 10px; border-radius: 999px; background: var(--accent-soft); color: var(--ink); }
+.links { display: flex; gap: 18px; font-weight: 600; font-size: 15px; }
+
+.oss { margin-top: 18px; grid-template-columns: repeat(2, 1fr); }
+.oss .card { padding: 22px 24px; box-shadow: none; }
+.oss .card h3 { font-family: Inter, system-ui, sans-serif; font-size: 16px; font-weight: 600; margin-bottom: 4px; }
+
+/* skills */
+.skills { display: grid; grid-template-columns: repeat(3, 1fr); gap: 18px; }
+.skills h3 { font-family: Inter, system-ui, sans-serif; font-size: 13px; font-weight: 600; letter-spacing: .08em; text-transform: uppercase; color: var(--muted); margin-bottom: 12px; }
+.keys { display: flex; flex-wrap: wrap; gap: 8px; }
+.key {
+  font-size: 14px; font-weight: 500; padding: 7px 12px; border-radius: 10px;
+  background: var(--surface); border: 1px solid var(--line);
+  box-shadow: 0 2px 0 var(--line);
+  transition: transform .08s, box-shadow .08s;
+  user-select: none;
+}
+.key:hover, .key.pressed { transform: translateY(2px); box-shadow: 0 0 0 var(--line); }
+
+/* contact */
+.contact { background: var(--surface); border: 1px solid var(--line); border-radius: 28px; padding: 48px; text-align: center; box-shadow: var(--shadow); }
+.contact h2 { font-size: clamp(30px, 4vw, 42px); margin-bottom: 12px; }
+.contact p { color: var(--muted); max-width: 52ch; margin: 0 auto 28px; }
+.contact .btns { justify-content: center; }
+
+footer { padding: 40px 0 56px; color: var(--muted); font-size: 14px; text-align: center; }
+
+@media (max-width: 860px) {
+  .stats { grid-template-columns: repeat(2, 1fr); }
+  .stat:last-child { grid-column: span 2; }
+  .cards, .cases, .projects, .oss, .skills { grid-template-columns: 1fr; }
+  nav ul { gap: 16px; }
+  nav ul li.opt { display: none; }
+}
+@media (max-width: 520px) {
+  .wrap { padding: 0 16px; }
+  .hero { padding: 64px 0 48px; }
+  section { padding: 56px 0; }
+  .contact { padding: 36px 20px; }
+  nav ul { gap: 14px; }
+}
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  * { transition: none !important; }
+}
+</style>
+</head>
+<body>
+
+<nav id="nav">
+  <div class="wrap">
+    <a class="mark" href="#top">Viktoria S.</a>
+    <ul>
+      <li class="opt"><a href="#work">Work</a></li>
+      <li><a href="#projects">Projects</a></li>
+      <li class="opt"><a href="#skills">Skills</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+  </div>
+</nav>
+
+<header class="hero" id="top">
+  <canvas id="sand" aria-hidden="true"></canvas>
+  <div class="wrap">
+    <div class="eyebrow"><span class="dot"></span>Kyiv, Ukraine · working remotely</div>
+    <h1>Viktoria Shchypalkina</h1>
+    <p class="role">Front-End &amp; Marketing Technology Engineer</p>
+    <p class="focus">Referral programs · A/B testing · Apple &amp; Google Wallet · AI agents</p>
+    <p class="lede">I build the referral programs that turn customers into a brand's best marketing channel. For 7+ years at Talkable I've designed, built and optimized campaigns for 300+ brands, from landing pages and widgets to lifecycle emails and Wallet passes.</p>
+    <div class="btns">
+      <a class="btn primary" href="#contact">Get in touch</a>
+      <a class="btn" href="#projects">See my games</a>
+    </div>
+
+    <div class="stats">
+      <div class="stat"><b>7+</b><span>years at Talkable</span></div>
+      <div class="stat"><b>4,000+</b><span>projects delivered</span></div>
+      <div class="stat"><b>~1,270</b><span>A/B tests built</span></div>
+      <div class="stat"><b>300+</b><span>brands</span></div>
+      <div class="stat"><b>4x</b><span>monthly delivery with AI</span></div>
+    </div>
+  </div>
+</header>
+
+<main>
+  <section id="work">
+    <div class="wrap">
+      <div class="sec-head">
+        <h2>What I do</h2>
+        <p>Front-end work where marketing meets engineering: fast, measurable, and safe to ship on live campaigns.</p>
+      </div>
+      <div class="grid cards">
+        <div class="card">
+          <div class="ico" style="background:var(--lilac)">🧪</div>
+          <h3>Experimentation</h3>
+          <p><span class="num">About 1,270 A/B tests</span> built: social proof, native sharing, progress bars, link emphasis. Often one shared test running across a dozen live campaigns.</p>
+        </div>
+        <div class="card">
+          <div class="ico" style="background:var(--sky)">🎫</div>
+          <h3>Apple &amp; Google Wallet</h3>
+          <p>The team's go-to Wallet specialist, with <span class="num">about 40 wallet projects</span> shipped in 2026, including the iOS 27 pass upgrade.</p>
+        </div>
+        <div class="card">
+          <div class="ico" style="background:var(--peach)">🎨</div>
+          <h3>Front end &amp; integrations</h3>
+          <p>HTML, SCSS, JavaScript and Liquid, built pixel-accurate from Figma and tested on desktop and mobile. Shopify checkout extensions, Klaviyo, Skio and partner apps.</p>
+        </div>
+        <div class="card">
+          <div class="ico" style="background:var(--mint)">🤖</div>
+          <h3>AI-assisted delivery</h3>
+          <p>Wrote the Wallet skill for Talkable's AI Assistant and delivered <span class="num">22 A/B tests</span> through it against a target of 15. Recognized by management for a 4x increase in monthly delivery.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="results" style="padding-top:0">
+    <div class="wrap">
+      <div class="sec-head">
+        <h2>Programs I worked on</h2>
+        <p>Referral programs featured in Talkable's public case studies.</p>
+      </div>
+      <div class="grid cases">
+        <div class="case"><div class="big">58x</div><div class="what">peak ROI</div><div class="brand">American Eagle Outfitters</div></div>
+        <div class="case"><div class="big">+278%</div><div class="what">referral revenue</div><div class="brand">SwimOutlet</div></div>
+        <div class="case"><div class="big">20x</div><div class="what">ROI</div><div class="brand">Puffy</div></div>
+      </div>
+      <p class="brands">Also built campaigns for <strong>Puma, Coach, J.Crew, TOMS, Bombas, Hydrow, Rothy's, Kipling, Kendra Scott, Upwork</strong> and many more.</p>
+    </div>
+  </section>
+
+  <section id="projects" style="padding-top:0">
+    <div class="wrap">
+      <div class="sec-head">
+        <h2>Side projects</h2>
+        <p>Tiny ASMR games for the browser and phones. No libraries, no asset files: canvas, the Web Audio API and every sound synthesized live. 🎧 Best with headphones.</p>
+      </div>
+      <div class="grid projects">
+        <article class="project">
+          <img src="assets/sablune.jpg" alt="Sablune: layered pastel sand pouring into a glass jar" loading="lazy">
+          <div class="body">
+            <h3>Sablune</h3>
+            <p>Slice a block of layered pastel sand with a little blade, watch it crumble down a glass funnel and build sand art in a jar, one slow breath at a time.</p>
+            <div class="tags"><span class="tag">Canvas</span><span class="tag">Web Audio</span><span class="tag">PWA</span><span class="tag">One HTML file</span></div>
+            <div class="links"><a href="https://helavika.github.io/sablune/">Play →</a><a href="https://github.com/helavika/sablune">Source</a></div>
+          </div>
+        </article>
+        <article class="project">
+          <img src="assets/hatchstone.jpg" alt="Hatchstone: a glowing geode cracking open in a cave" loading="lazy">
+          <div class="body">
+            <h3>Hatchstone</h3>
+            <p>Crack open real geodes, hatch glowlings and raise them in a cozy cave nest. 24 levels, 17 minerals, 26 creatures, breeding and a Glowpedia.</p>
+            <div class="tags"><span class="tag">Canvas</span><span class="tag">Web Audio</span><span class="tag">PWA</span><span class="tag">Co-op</span></div>
+            <div class="links"><a href="https://helavika.github.io/hatchstone/">Play →</a><a href="https://github.com/helavika/hatchstone">Source</a></div>
+          </div>
+        </article>
+      </div>
+
+      <div class="grid oss">
+        <div class="card">
+          <h3><a href="https://github.com/kaplayjs/kaplay/pull/1192">kaplay #1192</a></h3>
+          <p>Play sprite animations backwards in the KAPLAY game library.</p>
+        </div>
+        <div class="card">
+          <h3><a href="https://github.com/alexandercerutti/passkit-generator/pull/277">passkit-generator #277</a></h3>
+          <p>Fix <code>appLaunchURL</code> rejecting valid URIs in the Node.js Apple Wallet pass library.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="skills" style="padding-top:0">
+    <div class="wrap">
+      <div class="sec-head"><h2>Toolbox</h2></div>
+      <div class="skills">
+        <div>
+          <h3>Front end</h3>
+          <div class="keys"><span class="key">HTML5</span><span class="key">CSS / SCSS</span><span class="key">JavaScript</span><span class="key">TypeScript</span><span class="key">Liquid</span><span class="key">Canvas</span><span class="key">Web Audio</span><span class="key">Python</span></div>
+        </div>
+        <div>
+          <h3>Marketing tech</h3>
+          <div class="keys"><span class="key">A/B testing</span><span class="key">Apple Wallet</span><span class="key">Google Wallet</span><span class="key">Shopify</span><span class="key">Klaviyo</span><span class="key">Email</span><span class="key">CRO</span></div>
+        </div>
+        <div>
+          <h3>Workflow</h3>
+          <div class="keys"><span class="key">Claude Code</span><span class="key">MCP</span><span class="key">OpenClaw</span><span class="key">Playwright</span><span class="key">Figma</span><span class="key">QA</span><span class="key">Jira</span></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="contact" style="padding-top:0">
+    <div class="wrap">
+      <div class="contact">
+        <h2>Let's build something</h2>
+        <p>Open to roles in front-end engineering, marketing technology, growth engineering and solutions engineering.</p>
+        <div class="btns">
+          <!-- TODO: add email and LinkedIn links -->
+          <a class="btn primary" href="https://github.com/helavika">GitHub</a>
+        </div>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer>© 2026 Viktoria Shchypalkina · Made by hand in Kyiv</footer>
+
+<script>
+// Sticky nav border
+const nav = document.getElementById('nav');
+addEventListener('scroll', () => nav.classList.toggle('scrolled', scrollY > 8), { passive: true });
+
+// Toolbox keys: gentle "typing" — one key presses at a time
+const keys = [...document.querySelectorAll('.key')];
+const calm = matchMedia('(prefers-reduced-motion: reduce)').matches;
+if (!calm) setInterval(() => {
+  const k = keys[Math.floor(Math.random() * keys.length)];
+  k.classList.add('pressed');
+  setTimeout(() => k.classList.remove('pressed'), 140);
+}, 900);
+
+// Hero: a few pastel sand grains drifting down and settling (a nod to Sablune)
+(() => {
+  const c = document.getElementById('sand');
+  const ctx = c.getContext('2d');
+  const colors = ['#c9b6ff', '#ffc4ad', '#a9dfc9', '#b8d3ff', '#ffe0a3'];
+  let w, h, dpr, grains = [], piles;
+  function resize() {
+    if (c.clientWidth === w) return; // ignore height-only changes (mobile URL bar)
+    dpr = Math.min(devicePixelRatio || 1, 2);
+    w = c.clientWidth; h = c.clientHeight;
+    c.width = w * dpr; c.height = h * dpr;
+    ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+    piles = new Float32Array(Math.ceil(w / 4) + 1);
+    grains = [];
+  }
+  function spawn() {
+    // pour from the right side so it stays clear of the text
+    const x = w * (0.72 + Math.random() * 0.24);
+    grains.push({ x, y: -4, vx: (Math.random() - .5) * .3, vy: .6 + Math.random() * .8,
+      r: 1.2 + Math.random() * 1.6, c: colors[Math.floor(Math.random() * colors.length)], rest: false });
+  }
+  resize();
+  addEventListener('resize', resize);
+  if (calm) return;
+  let t = 0;
+  function frame() {
+    t++;
+    if (grains.length < 900 && t % 3 === 0) spawn();
+    ctx.clearRect(0, 0, w, h);
+    ctx.globalAlpha = .55;
+    for (const g of grains) {
+      if (!g.rest) {
+        g.vy += .03; g.x += g.vx; g.y += g.vy;
+        const i = Math.max(0, Math.min(piles.length - 1, Math.round(g.x / 4)));
+        const floor = h - piles[i];
+        if (g.y >= floor) {
+          // roll toward the lower neighbour, like real sand
+          const l = piles[i - 1] ?? 1e9, r = piles[i + 1] ?? 1e9;
+          if (l < piles[i] - 2 && i > 0) { g.x -= 4; continue; }
+          if (r < piles[i] - 2 && i < piles.length - 1) { g.x += 4; continue; }
+          g.y = floor; g.rest = true; piles[i] += 1.4;
+        }
+      }
+      ctx.fillStyle = g.c;
+      ctx.beginPath(); ctx.arc(g.x, g.y, g.r, 0, 6.283); ctx.fill();
+    }
+    if (grains.length >= 900 && grains.every(g => g.rest)) return; // done pouring
+    requestAnimationFrame(frame);
+  }
+  requestAnimationFrame(frame);
+})();
+</script>
+</body>
+</html>
